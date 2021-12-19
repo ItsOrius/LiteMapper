@@ -48,7 +48,8 @@ function init() {
 
 
 function calculate(_input) {
-    const statusText = document.getElementById("status-text");
+    let statusText = document.getElementById("status-text");
+    if (!statusText) statusText = { innerText: "" };
     let beatmap = {
         _notes: [],
         _events: []
@@ -60,7 +61,7 @@ function calculate(_input) {
     } catch(e) {
         throw new Error("Failed to parse beatmap!");
     }
-    if (!beatmap.hasOwnProperty("_notes")) return new Error("Not a valid beatmap!");
+    if (!beatmap.hasOwnProperty("_notes")) throw new Error("Not a valid beatmap!");
 
     let lastPadding = 0;
     let lastTime;
@@ -249,13 +250,45 @@ function calculate(_input) {
     // set beatmap to text
     statusText.innerText += "\nFinalizing file...";
     const finalBeatmap = encodeURIComponent(JSON.stringify(beatmap));
-    let finalLightshow = beatmap;
-    finalLightshow._notes = [];
-    finalLightshow._obstacles = [];
-    finalLightshow = encodeURIComponent(JSON.stringify(finalLightshow));
+    let semiFinalLightshow = beatmap;
+    semiFinalLightshow._notes = [];
+    semiFinalLightshow._obstacles = [];
+    let finalLightshow = encodeURIComponent(JSON.stringify(semiFinalLightshow));
 
     // tell the user we've done it once again
     statusText.innerText += "\nFinished!\n\n";
-    statusText.innerHTML += `<a href="data:text/plain;charset=utf-8,${finalBeatmap}" download="ExpertPlusStandard.dat"><button>Download Map</button></a>\n\n`;
-    statusText.innerHTML += `<a href="data:text/plain;charset=utf-8,${finalLightshow}" download="LightshowStandard.dat"><button>Download Lightshow</button></a>`;
+    statusText.innerHTML += `<a class="download" href="data:text/plain;charset=utf-8,${finalBeatmap}" download="ExpertPlusStandard.dat"><button>Download Map</button></a>\n\n`;
+    statusText.innerHTML += `<a class="download" href="data:text/plain;charset=utf-8,${finalLightshow}" download="LightshowStandard.dat"><button>Download Lightshow</button></a>`;
+
+    return [JSON.stringify(beatmap), JSON.stringify(semiFinalLightshow)];
 }
+
+
+
+function textCalculate() {
+    if (!location.search) return;
+    const params = new URLSearchParams(location.search);
+    let data = params.get("data");
+    if (!data) return;
+    data = data.toString();
+    document.body.innerHTML = "";
+    document.head.innerHTML = "<title>LiteMapper</title><meta charset=\"UTF-8\">"
+
+    try {
+        const result = calculate(data);
+        let output = result[0]
+        if (params.get("lightshow")) {
+            if (params.get("lightshow").toString() == "true") output = result[1];
+        }
+        document.body.innerText += output;
+        console.log(output);
+    } catch(e) {
+        console.error(e);
+        document.body.innerHTML = `{"error":"500 Internal Server Error","errorMessage":"${e.message}"}`;
+        return;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    textCalculate();
+});

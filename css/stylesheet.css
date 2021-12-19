@@ -1,0 +1,91 @@
+@font-face {
+    font-family: tekoRegular;
+    src: url(Teko-Regular.ttf);
+}
+
+@font-face {
+    font-family: tekoBold;
+    src: url(Teko-Bold.ttf);
+}
+
+@font-face {
+    font-family: beon;
+    src: url(beon-webfont.ttf);
+}
+
+html {
+    background-color: #222;
+    color: white;
+}
+
+header {
+    padding: 2%;
+    text-align: center;
+    background-image: url(../media/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0px 0px 25px black;
+    margin-bottom: 5%;
+}
+
+h1 {
+    font-family: beon;
+    font-size: 750%;
+}
+
+h2 {
+    font-family: tekoBold;
+    font-size: 500%;
+    margin: 0%;
+    text-shadow: 0px 5px 10px black;
+}
+
+h4 {
+    font-family: tekoBold;
+    font-size: 250%;
+}
+
+main {
+    font-family: tekoRegular;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+footer {
+    margin-top: 5%;
+    padding: 2%;
+    text-align: center;
+    background-color: #111;
+}
+
+#status-text {
+    font-family: monospace;
+    border-radius: 5%;
+}
+
+a {
+    color: #5cf;
+}
+
+input {
+    margin: 10%;
+    font-size: 100%;
+}
+
+button {
+    margin: 5%;
+    border: none;
+    border-radius: 10%;
+    color: white;
+    padding: 5%;
+    font-size: 100%;
+    background-color: #4d4;
+    box-shadow: 0 0 50px black;
+    width: 24%;
+}
+
+label {
+    display: none;
+}
