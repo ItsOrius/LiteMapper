@@ -143,7 +143,7 @@ function calculate(_input) {
         }
 
         // send the center light event to the json
-        beatmap._events.push({
+        if (note.raw._cutDirection != 8) beatmap._events.push({
             _time: note.raw._time,
             _type: lightType,
             _value: lightValue
