@@ -180,7 +180,7 @@ function calculate(_input) {
         beatmap._events.push({
             _time: note.raw._time,
             _type: laserSide == 2 ? 12 : 13,
-            _value: 0.5 / note.padding;
+            _value: 2 / note.padding;
         });
         beatmap._events.push({
             _time: note.raw._time,
