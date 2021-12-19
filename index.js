@@ -67,6 +67,7 @@ function calculate(_input) {
     let leftLaserNext = true;
     statusText.innerText += "\nAdding note-based lighting effects...";
     const paceChanges = [""];
+    beatmap._events = [];
     for (let i = 0; i < beatmap._notes.length; i++) {
         // make sure that the next note isnt on the same beat
         let nextNote = null;
