@@ -177,19 +177,11 @@ function calculate(_input) {
         }
 
         // add laser effects
-        if (lastPadding < 1) {
-            beatmap._events.push({
-                _time: note.raw._time,
-                _type: laserSide == 2 ? 12 : 13,
-                _value: 2
-            });
-        } else {
-            beatmap._events.push({
-                _time: note.raw._time,
-                _type: laserSide == 2 ? 12 : 13,
-                _value: 1
-            });
-        }
+        beatmap._events.push({
+            _time: note.raw._time,
+            _type: laserSide == 2 ? 12 : 13,
+            _value: 0.5 / note.padding;
+        });
         beatmap._events.push({
             _time: note.raw._time,
             _type: laserSide,
