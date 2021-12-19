@@ -1,20 +1,3 @@
-/*
-    COLORS SECTION
-
-    0 or below: RED
-    above zero: BLUE
-
-    VALUES
-
-    [0] = ACTIVATE
-    [1] = FLASH
-    [2] = FADE
-*/
-let slowColors = [ 1, 1, 1 ];
-let fastColors = [ 0, 0, 0 ];
-
-
-
 class Note {
     constructor(note, nextNote) {
         this.raw = note;
@@ -171,9 +154,19 @@ function calculate(_input) {
         if (leftLaserNext) {
             leftLaserNext = false;
             laserSide = 2;
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 3,
+                _value: 0
+            });
         } else {
             leftLaserNext = true;
             laserSide = 3;
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 2,
+                _value: 0
+            });
         }
 
         // add laser effects
