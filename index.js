@@ -236,8 +236,13 @@ function calculate(_input) {
     // set beatmap to text
     statusText.innerText += "\nFinalizing file...";
     const finalBeatmap = encodeURIComponent(JSON.stringify(beatmap));
+    let finalLightshow = beatmap;
+    finalLightshow._notes = [];
+    finalLightshow._obstacles = [];
+    finalLightshow = encodeURIComponent(JSON.stringify(finalLightshow));
 
     // tell the user we've done it once again
     statusText.innerText += "\nFinished!\n\n";
-    statusText.innerHTML += `<a href="data:text/plain;charset=utf-8,${finalBeatmap}" download="EasyStandard.dat"><button>Download</button></a>`;
+    statusText.innerHTML += `<a href="data:text/plain;charset=utf-8,${finalBeatmap}" download="ExpertPlusStandard.dat"><button>Download Map</button></a>\n\n`;
+    statusText.innerHTML += `<a href="data:text/plain;charset=utf-8,${finalLightshow}" download="LightshowStandard.dat"><button>Download Lightshow</button></a>`;
 }
