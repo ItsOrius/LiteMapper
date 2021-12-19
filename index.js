@@ -193,7 +193,7 @@ function calculate(_input) {
         beatmap._events.push({
             _time: note.raw._time,
             _type: laserSide == 2 ? 12 : 13,
-            _value: Math.ceil(2 / note.padding)
+            _value: Math.ceil(2 / note.padding) * Math.ceil(2 / note.padding)
         });
         beatmap._events.push({
             _time: note.raw._time,
