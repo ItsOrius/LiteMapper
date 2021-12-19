@@ -1,0 +1,17 @@
+header {
+    padding: 2%;
+    text-align: center;
+}
+
+main {
+    margin: 10%;
+}
+
+footer {
+    padding: 2%;
+    text-align: center;
+}
+
+p {
+    font-family: monospace;
+}
