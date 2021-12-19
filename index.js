@@ -101,7 +101,14 @@ function calculate(_input) {
         let pacePrefix = null;
 
         // check what effects to use based on the current pace of the notes
-        if (note.padding >= 2) {
+        if (note.raw._cutDirection == 8) {
+            // add back light effects if block is cut in any direction
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 0,
+                _value: note.padding < 1 ? 6 : 2
+            });
+        } else if (note.padding >= 2) {
             // check if pace changed
             if (lastPadding < 2 || i < 1) {
                 beatmap._events.push(EventTemplate.ringZoom(note.raw._time))
@@ -180,15 +187,6 @@ function calculate(_input) {
             _type: laserSide,
             _value: laserColor
         });
-
-        // add back light effects if block is cut in any direction
-        if (note.raw._cutDirection == 8) {
-            beatmap._events.push({
-                _time: note.raw._time,
-                _type: 1,
-                _value: laserColor
-            });
-        }
 
         // set data remenants
         lastPadding = note.padding;
