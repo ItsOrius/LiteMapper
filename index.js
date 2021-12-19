@@ -109,6 +109,11 @@ function calculate(_input) {
                 _type: 0,
                 _value: note.padding < 1 ? 6 : 2
             });
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 4,
+                _value: 0
+            });
         } else if (note.padding >= 2) {
             // check if pace changed
             if (lastPadding < 2 || i < 1) {
@@ -144,11 +149,18 @@ function calculate(_input) {
         }
 
         // send the center light event to the json
-        if (note.raw._cutDirection != 8) beatmap._events.push({
-            _time: note.raw._time,
-            _type: lightType,
-            _value: lightValue
-        });
+        if (note.raw._cutDirection != 8) {
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: lightType,
+                _value: lightValue
+            });
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 0,
+                _value: 0
+            });
+        }
 
         // setup laser effects
         let laserColor;
