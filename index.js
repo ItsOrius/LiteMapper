@@ -118,7 +118,7 @@ function calculate(_input) {
             });
             // make this be the only event in the event that this is a bomb
             if (note.raw._type == 3) continue;
-        } else if (note.padding >= 2) {
+        } else if (note.padding > 2) {
             // check if pace changed
             if (lastPadding < 2 || i < 1) {
                 beatmap._events.push(EventTemplate.ringZoom(note.raw._time))
