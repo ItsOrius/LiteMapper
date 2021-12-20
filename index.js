@@ -1,3 +1,7 @@
+const version = "1.0.0"
+
+
+
 class Note {
     constructor(note, nextNote) {
         this.raw = note;
@@ -294,4 +298,6 @@ function textCalculate() {
 
 document.addEventListener('DOMContentLoaded', () => {
     textCalculate();
+    const versionText = document.getElementById("version-text");
+    versionText.innerText = versionText.innerText.replace("{ver}", version);
 });
