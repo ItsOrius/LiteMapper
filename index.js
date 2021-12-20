@@ -98,13 +98,14 @@ function calculate(_input) {
 
         // get variables needed to keep track of event statistics
         const note = new Note(beatmap._notes[i], nextNote);
+
         let lightValue;
         let lightType;
         let pacePrefix = null;
 
         // check what effects to use based on the current pace of the notes
-        if (note.raw._cutDirection == 8) {
-            // add back light effects if block is cut in any direction
+        if (note.raw._cutDirection == 8 || note.raw._type == 3) {
+            // add back light effects if block is cut in any direction or is a bomb
             beatmap._events.push({
                 _time: note.raw._time,
                 _type: 0,
@@ -115,6 +116,8 @@ function calculate(_input) {
                 _type: 4,
                 _value: 0
             });
+            // make this be the only event in the event that this is a bomb
+            if (note.raw._type == 3) continue;
         } else if (note.padding >= 2) {
             // check if pace changed
             if (lastPadding < 2 || i < 1) {
