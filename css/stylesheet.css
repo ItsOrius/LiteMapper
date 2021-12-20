@@ -32,6 +32,7 @@ header {
 h1 {
     font-family: beon;
     font-size: 750%;
+    margin: 1%;
 }
 
 h2 {
@@ -44,11 +45,11 @@ h2 {
 h4 {
     font-family: tekoBold;
     font-size: 250%;
+    margin: 1%;
 }
 
 main {
     font-family: tekoRegular;
-    width: 80%;
     margin: auto;
     text-align: center;
 }
@@ -70,20 +71,20 @@ a {
 }
 
 input {
-    margin: 10%;
+    margin: 5%;
     font-size: 100%;
 }
 
 button {
-    margin: 5%;
+    margin: 2.5%;
     border: none;
     border-radius: 10%;
     color: white;
-    padding: 5%;
-    font-size: 100%;
+    padding: 1.25%;
+    font-size: 200%;
     background-color: #4d4;
     box-shadow: 0 0 50px black;
-    width: 24%;
+    width: 12%;
 }
 
 label {

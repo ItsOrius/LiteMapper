@@ -257,7 +257,7 @@ function calculate(_input) {
 
     // tell the user we've done it once again
     statusText.innerText += "\nFinished!\n\n";
-    statusText.innerHTML += `<a class="download" href="data:text/plain;charset=utf-8,${finalBeatmap}" download="ExpertPlusStandard.dat"><button>Download Map</button></a>\n\n`;
+    statusText.innerHTML += `<a class="download" href="data:text/plain;charset=utf-8,${finalBeatmap}" download="ExpertPlusStandard.dat"><button>Download Beatmap</button></a>\n\n`;
     statusText.innerHTML += `<a class="download" href="data:text/plain;charset=utf-8,${finalLightshow}" download="LightshowStandard.dat"><button>Download Lightshow</button></a>`;
 
     return [JSON.stringify(beatmap), JSON.stringify(semiFinalLightshow)];
