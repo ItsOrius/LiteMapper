@@ -11,8 +11,12 @@ If you want to use this in any other scenario then opening the website, we offer
 As we are completely serverless, we use URL query strings and then return the result as the data of the webpage.
 
 #### Parameters
-- ``data``: Required to use the API. Should be the entire JSON of a beatmap file
-- ``lightshow``: When set to ``true``, the API will return the level without any notes, bombs or obstacles. Otherwise, it returns the level as usual.
+- ``data``
+ 
+Required to use the API. Should be the entire JSON of a beatmap file
+- ``lightshow``
+
+When set to ``true``, the API will return the level without any notes, bombs or obstacles. Otherwise, it returns the level as usual.
 
 #### Example
 Here's how you could go about using the API in a JavaScript application:
@@ -41,4 +45,5 @@ You may be wondering, how do we manage to incentivize more creative mapping? Rat
 - Beats with more than one block per two beats receive a ring light every beat
 - No-direction blocks result in the back lights turning on and the center lights turning off
 - The laser opposite of the last (starting on the left) will flash, but the other laser will deactivate
+
 Be aware that (at least for now) we count bombs as notes. This is due to the fact that any section where there are lots of bombs likely wont have any notes and are typically very fast paced sections that are too hard for the used difficulty. We highly recommend that you use your most complex beatmap for the lightshow, as using easier difficulties will not give as desirable of a result.
