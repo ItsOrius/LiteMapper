@@ -11,10 +11,8 @@ If you want to use this in any other scenario then opening the website, we offer
 As we are completely serverless, we use URL query strings and then return the result as the data of the webpage.
 
 ### Parameters
-- ``data``
-Required to use the API. Should be the entire JSON of a beatmap file
-- ``lightshow``
-When set to ``true``, the API will return the level without any notes, bombs or obstacles. Otherwise, it returns the level as usual.
+- ``data``: Required to use the API. Should be the entire JSON of a beatmap file
+- ``lightshow``: When set to ``true``, the API will return the level without any notes, bombs or obstacles. Otherwise, it returns the level as usual.
 
 ### Example
 Here's how you could go about using the API in a JavaScript application:
@@ -23,13 +21,13 @@ Here's how you could go about using the API in a JavaScript application:
 const beatmap = {"_notes" : [...]}
 
 // use litemapper to generate full level
-fetch("https://litemapper.net?data=" + JSON.stringify(beatmap)).then(res => res.json()).then(data => {
+fetch("https://litemapper.net/?data=" + JSON.stringify(beatmap)).then(res => res.json()).then(data => {
     if (data.error) throw new Error(data.errorMessage);
     const fullLevel = data;
 })
 
 // use litemapper to generate a lightshow
-fetch("https://litemapper.net?lightshow=true&data=" + JSON.stringify(beatmap)).then(res => res.json()).then(data => {
+fetch("https://litemapper.net/?lightshow=true&data=" + JSON.stringify(beatmap)).then(res => res.json()).then(data => {
     if (data.error) throw new Error(data.errorMessage);
     const lightshow = data;
 })
