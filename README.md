@@ -1,6 +1,8 @@
 # LiteMapper
 LiteMapper is a website that automatically generates lights for Beat Saber maps. It incentivizes creative mapping, as maps with better pacing, emphasis, and block choices will receive a more detailed lightshow than maps of lower quality.
 
+[Preview Video](https://www.youtube.com/watch?v=S7duRjJlXBc)
+
 ## Basic Usage
 1. Visit https://litemapper.net.
 2. Upload your beatmap and press the **Generate** button.
