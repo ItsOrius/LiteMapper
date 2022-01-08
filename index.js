@@ -224,7 +224,7 @@ function calculate(_input) {
         }
 
         // add laser effect if not a double block note
-        if (!doubleLasers) {
+        if (!doubleLasers || note.padding < 2) {
             beatmap._events.push({
                 _time: note.raw._time,
                 _type: laserSide == 2 ? 12 : 13,
