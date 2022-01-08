@@ -78,6 +78,7 @@ function calculate(_input) {
         let nextNote = null;
         let n = i;
         let addedRingRotation = false;
+        let doubleLasers = false;
         while(nextNote == null) {
             n++;
             const nextUp = beatmap._notes[n];
@@ -92,6 +93,7 @@ function calculate(_input) {
                     beatmap._events.push(EventTemplate.ringRotation(beatmap._notes[i]._time))
                     addedRingRotation = true;
                 }
+                doubleLasers = true;
                 continue;
             }
             nextNote = nextUp;
@@ -122,7 +124,7 @@ function calculate(_input) {
             });
             // make this be the only event in the event that this is a bomb
             if (note.raw._type == 3) continue;
-        } else if (note.padding > 2) {
+        } else if (note.padding >= 2) {
             // check if pace changed
             if (lastPadding < 2 || i < 1) {
                 beatmap._events.push(EventTemplate.ringZoom(note.raw._time))
@@ -179,7 +181,30 @@ function calculate(_input) {
             laserColor = 3;
         }
 
-        if (leftLaserNext) {
+        if (doubleLasers && note.padding >= 2) {
+            // when double blocks, use double lasers
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 3,
+                _value: laserColor
+            });
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 2,
+                _value: laserColor
+            });
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 12,
+                _value: calculateLaserSpeed(note.padding)
+            });
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: 13,
+                _value: calculateLaserSpeed(note.padding)
+            });
+        } else if (leftLaserNext) {
+            // when switching to the left laser, turn off the right laser
             leftLaserNext = false;
             laserSide = 2;
             beatmap._events.push({
@@ -188,6 +213,7 @@ function calculate(_input) {
                 _value: 0
             });
         } else {
+            // when switching to the right laser, turn off the left laser
             leftLaserNext = true;
             laserSide = 3;
             beatmap._events.push({
@@ -197,17 +223,19 @@ function calculate(_input) {
             });
         }
 
-        // add laser effects
-        beatmap._events.push({
-            _time: note.raw._time,
-            _type: laserSide == 2 ? 12 : 13,
-            _value: Math.ceil((Math.ceil((2 / note.padding) + 1) ** 2) / 4)
-        });
-        beatmap._events.push({
-            _time: note.raw._time,
-            _type: laserSide,
-            _value: laserColor
-        });
+        // add laser effect if not a double block note
+        if (!doubleLasers) {
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: laserSide == 2 ? 12 : 13,
+                _value: calculateLaserSpeed(note.padding)
+            });
+            beatmap._events.push({
+                _time: note.raw._time,
+                _type: laserSide,
+                _value: laserColor
+            });
+        }
 
         // set data remenants
         lastPadding = note.padding;
@@ -295,6 +323,14 @@ function textCalculate() {
         return;
     }
 }
+
+
+
+function calculateLaserSpeed(padding) {
+    return Math.ceil((Math.ceil((2 / padding) + 1) ** 2) / 4)
+}
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     textCalculate();
