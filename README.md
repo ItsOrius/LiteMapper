@@ -47,3 +47,4 @@ You may be wondering, how do we manage to incentivize more creative mapping? Rat
 - Beats with more than one block per two beats receive a ring light every beat.
 - Any-direction blocks and bombs result in the back lights turning on and the center lights turning off.
 - The laser opposite of the last (starting on the left) will flash, but the other laser will deactivate.
+- Both lasers activate on double notes with two beats or more of padding
