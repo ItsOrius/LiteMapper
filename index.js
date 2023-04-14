@@ -18,6 +18,13 @@ fs.readdirSync(__dirname + '/public').forEach(file => {
   }
 });
 
+// redirect everything in /routes
+fs.readdirSync(__dirname + '/routes').forEach(file => {
+  if (file.endsWith('.js')) {
+    app.use('/api/v1/' + file.replace('.js', ''), require(__dirname + '/routes/' + file));
+  }
+});
+
 // start express server
 app.listen(3000, () => {
   console.log(`Started listening on port 3000.`);

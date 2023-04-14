@@ -91,6 +91,7 @@ button {
     background-color: #4d4;
     box-shadow: 0 0 50px black;
     width: 12%;
+    cursor: pointer;
 }
 
 label {
