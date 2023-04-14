@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>LiteMapper</title>
-        <meta charset="UTF-8">
-        <link href="./css/stylesheet.css" rel="stylesheet">
-        <script src="./index.js"></script>
-        <meta content="LiteMapper" property="og:title" />
-        <meta content="Your friendly neighborhood autolighter!" property="og:description" />
-        <meta content="https://litemapper.com" property="og:url" />
-        <meta content="#55ccff" data-react-helmet="true" name="theme-color" />
-    </head>
-    <body>
-        <header>
-            <h1>LiteMapper</h1>
-            <h4>Your friendly neighborhood autolighter!</h4>
-            <h6 id="version-text">Version {ver}</h6>
-        </header>
-        <main>
-            <h2>Upload your beatmap!</h2>
-            <label for="beatmap-input">Upload</label>
-            <input type="file" id="beatmap-input" accept=".dat">
-            <h2>Press the big green button!</h2>
-            <button onclick="init()">Generate</button>
-            <p id="status-text">Awaiting input...</p>
-        </main>
-        <footer>
-            <h4>Created by <a href="https://github.com/itsorius" target="_blank">Orius</a></h4>
-        </footer>
+  <head>
+    <title>LiteMapper</title>
+    <meta charset="UTF-8">
+    <link href="./css/stylesheet.css" rel="stylesheet">
+    <script src="./js/index.js"></script>
+    <meta content="LiteMapper" property="og:title" />
+    <meta content="Your friendly neighborhood autolighter!" property="og:description" />
+    <meta content="https://litemapper.net" property="og:url" />
+    <meta content="#55ccff" data-react-helmet="true" name="theme-color" />
+  </head>
+  <body>
+    <nav>
+      <button onclick="location.href = '/';">Home</button>
+      <button onclick="location.href = 'spotify';">Spotify</button>
+    </nav>
+    <header>
+      <h1>LiteMapper</h1>
+      <h4>Your friendly neighborhood autolighter!</h4>
+      <h6 id="version-text">Version {ver}</h6>
+    </header>
+      <main>
+        <h2>Upload your beatmap!</h2>
+        <label for="beatmap-input">Upload</label>
+        <input type="file" id="beatmap-input" accept=".dat">
+        <h2>Press the big green button!</h2>
+        <button onclick="init()">Generate</button>
+        <p id="status-text">Awaiting input...</p>
+      </main>
+      <footer>
+        <h4>Created by <a href="https://github.com/itsorius" target="_blank">Orius</a></h4>
+      </footer>
     </body>
 </html>
