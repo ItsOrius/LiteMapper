@@ -1,0 +1,24 @@
+{
+  "name": "litemapper",
+  "version": "1.0.0",
+  "description": "A website that provides utilities related to Beat Saber!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Orius",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "node-fetch": "^3.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsOrius/LiteMapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ItsOrius/LiteMapper/issues"
+  },
+  "homepage": "https://github.com/ItsOrius/LiteMapper#readme"
+}
